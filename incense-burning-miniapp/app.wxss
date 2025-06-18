@@ -1,0 +1,6 @@
+/** 全局样式 **/
+page {
+  height: 100vh;
+  background-color: #000;
+  overflow: hidden;
+}

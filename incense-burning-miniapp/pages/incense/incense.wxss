@@ -1,0 +1,119 @@
+page {
+  height: 100vh;
+  background-color: #000;
+  overflow: hidden;
+}
+
+.incense-container {
+  position: relative;
+  width: 100px;
+  height: 300px;
+  margin: 0 auto;
+  padding-top: 250px; 
+}
+
+.incense {
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+  width: 6px;
+  height: 400px;
+  background: linear-gradient(to bottom, #8B4513, #666);
+  border-radius: 3px;
+  z-index: 3;
+  box-shadow: 0 0 5px rgba(139, 69, 19, 0.5);
+}
+
+.incense-burn {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 12px;
+  background: linear-gradient(to bottom, #FF4500, #FF8C00);
+  border-radius: 3px 3px 0 0;
+  z-index: 4;
+  /* 移除直接应用的animation属性 */
+}
+
+/* 新增动画类 */
+.incense-burn.active {
+  animation: burnMove 1s infinite alternate;
+}
+
+.spark {
+  position: absolute;
+  background: radial-gradient(circle, #FFEB3B 0%, #FF5722 70%, #795548 100%);
+  border-radius: 50%;
+  opacity: 0;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.ash {
+  position: absolute;
+  background: linear-gradient(135deg, #eee 60%, #ccc 100%);
+  opacity: 0;
+  z-index: 1;
+  pointer-events: none;
+  border-radius: 30% 70% 60% 40% / 60% 40% 70% 30%;
+  transform-origin: center;
+}
+
+.ash-pile {
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 30px;
+  height: 20px;
+  background: transparent;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.ash-piece {
+  position: absolute;
+  bottom: 0;
+  background: linear-gradient(135deg, #eee, #ccc 80%);
+  border-radius: 50% 60% 40% 50% / 60% 40% 70% 30%;
+  opacity: 0.85;
+  pointer-events: none;
+}
+
+@keyframes burnMove {
+  0% { height: 10px; }
+  100% { height: 14px; }
+}
+
+@keyframes fallAsh {
+  0% { transform: translateY(0) translateX(0) rotate(0deg); opacity: 1; }
+  50% { transform: translateY(50px) translateX(-10px) rotate(10deg); opacity: 0.8; }
+  100% { transform: translateY(100px) translateX(10px) rotate(30deg); opacity: 0; }
+}
+
+@keyframes sparkFly {
+  0% { transform: translate(0, 0); opacity: 0.8; }
+  100% { transform: translate(var(--spark-x), var(--spark-y)); opacity: 0; }
+}
+
+
+/* 水印样式 */
+.watermark {
+  position: fixed;
+  right: 10px; /* 从左侧移至右侧 */
+  bottom: 10px;
+  color: rgba(255, 255, 255, 0.5); /* 提高不透明度 */
+  font-size: 14px; /* 增大字体 */
+  z-index: 100;
+  pointer-events: none;
+  animation: fadeInOut 5s infinite alternate;
+  text-shadow: 0 0 2px rgba(0, 0, 0, 0.3); /* 添加文字阴影增强可读性 */
+}
+
+/* 水印闪烁动画 */
+@keyframes fadeInOut {
+  0% { opacity: 0.4; } /* 提高最小透明度 */
+  100% { opacity: 0.7; } /* 提高最大透明度 */
+}

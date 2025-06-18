@@ -1,0 +1,18 @@
+<template name="sparkElement">
+  <view class="spark" style="width: {{size}}px; height: {{size}}px; left: {{x}}px; top: {{y}}px;"></view>
+</template>
+
+<template name="ashElement">
+  <view class="ash" style="width: {{width}}px; height: {{height}}px; left: {{x}}px;"></view>
+</template>
+
+<view class="incense-container" id="incenseContainer">
+  <view class="incense" id="incense" style="height: {{incenseHeight}}px;">
+    <view class="incense-burn" id="incenseBurn"></view>
+  </view>
+  <view class="ash-pile" id="ashPile"></view>
+  <!-- 添加水印 -->
+  <view class="watermark">公众号：IT老菜鸟</view>
+  <!-- 新增左下角水印 -->
+  <view class="watermark" style="left: 10px; right: auto;">代码由AI自动生成</view>
+</view>
